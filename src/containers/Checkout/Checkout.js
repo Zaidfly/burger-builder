@@ -1,10 +1,14 @@
 import React, {Component} from 'react';
+import { Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
-import {Route} from 'react-router-dom';
+
 import ContactData from './ContactData/ContactData';
 
 class Checkout extends Component {
 
+/*  not needed with redux   
     constructor(props){
         super(props);
 
@@ -23,16 +27,7 @@ class Checkout extends Component {
             ingredients: ingredients,
             totalPrice: price
         };
-    }
-
-    componentDidMount() {
-        // const query = new URLSearchParams(this.props.location.search);
-        // const ingredients = {};
-        // for (let param of query.entries()) {
-        //     ingredients[param[0]] = +param[1];
-        // }
-        // this.setState({ingredients: ingredients});
-    }
+    } */
 
     onCheckoutCancelledHandler = () => {
         this.props.history.goBack();
@@ -46,20 +41,22 @@ class Checkout extends Component {
         return (
             <div>
                 <CheckoutSummary 
-                    ingredients={this.state.ingredients}
+                    ingredients={this.props.ingredients}
                     onCheckoutCancelled={this.onCheckoutCancelledHandler}
                     onCheckoutContinued={this.onCheckoutContinuedHandler} />
                 <Route 
                     path={this.props.match.path + '/contact-data'} 
-                    render={(props) => (
-                        <ContactData 
-                            ingredients={this.state.ingredients} 
-                            totalPrice={this.state.totalPrice} 
-                            {...props} />)
-                    }/>
+                    component={ContactData}/>
             </div>            
         );
     } 
 }
 
-export default Checkout;
+const mapStateToProps = state => {
+    return {
+        ingredients: state.ingredients,
+        totalPrice: state.totalPrice
+    }
+};
+
+export default connect(mapStateToProps)(Checkout);
