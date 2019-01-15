@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Layout from './containers/Layout/Layout';
-import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
-import Checkout from './containers/Checkout/Checkout';
+import BurgerBuilder from './containers/NewOrder/BurgerBuilder/BurgerBuilder';
+import Checkout from './containers/NewOrder/Checkout/Checkout';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Orders from './containers/Orders/Orders';
 

@@ -1,0 +1,1 @@
+export const INIT_CHECKOUT = 'INIT_CHECKOUT';
