@@ -22,3 +22,13 @@
 .Danger {
     color: #944317;
 }
+
+.Link {
+    background:none!important;
+    border: none;
+    border-bottom: 1px solid #444;
+    font-weight: inherit;
+    font-size: 80%;
+    color: #444;
+    padding: 0px;
+}

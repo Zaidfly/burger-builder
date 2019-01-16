@@ -1,6 +1,10 @@
 import * as actionTypes from './actionTypes';
 import axios from '../../../axios-orders';
 
+const createOrderStart = () => {
+    return { type: actionTypes.CREATE_ORDER_START }
+}
+
 const createOrderSuccess = (orderData) => {
     return {
         type: actionTypes.CREATE_ORDER_SUCCESS,
@@ -15,11 +19,7 @@ const createOrderFail = (error) => {
     };
 }
 
-const createOrderStart = () => {
-    return { type: actionTypes.CREATE_ORDER_START }
-}
-
-export const createOrder = (orderData) => dispatch => {
+export const createOrder = orderData => dispatch => {
     dispatch(createOrderStart());
 
     axios.post('/orders.json', orderData)

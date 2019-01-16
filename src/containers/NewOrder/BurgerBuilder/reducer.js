@@ -13,7 +13,7 @@ const initialState = {
     totalPrice: INGREDIENT_PRICES.base,
     error: false,
     loading: false,
-    checkouting: true
+    building: false
 };
 
 const updateIngredients = (state, ingredientName, count) => {
@@ -32,7 +32,8 @@ const updateIngredients = (state, ingredientName, count) => {
     return {
         ...state, 
         ingredients: updatedIngredients,
-        totalPrice: newPrice
+        totalPrice: newPrice,
+        building: true
     };
 }
 
@@ -45,7 +46,8 @@ const fetchIngredientsSuccess = (state, action) => {
                     (price, ingName) => price + action.ingredients[ingName],
                     INGREDIENT_PRICES.base),
         error: false,
-        loading: false
+        loading: false,
+        building: false
     };
 }
 
